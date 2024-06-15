@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Signup Page{% endblock %}
+
+
+
+{% block content %}
+<div class="container">
+    {% if messages %}
+    <div>
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="card">
+        <h5 class="card-header">Profile Info</h5>
+        <div class="card-body">
+            <p class="card-text">Name : {{request.user.first_name}} {{request.user.last_name}}</p>
+            <p class="card-text">Email : {{request.user.email}} </p>
+            <p class="card-text">Mobile : {{request.user.mobile}} </p>
+            <p class="card-text">Adddress : {{request.user.address}} </p>
+            <p class="card-text">State : {{request.user.state}} </p>
+            <p class="card-text">City : {{request.user.city}} </p>
+            <p class="card-text">Zip : {{request.user.zip}} </p>
+
+            <a href="/auth_app/logout" class="btn btn-primary">Logout</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

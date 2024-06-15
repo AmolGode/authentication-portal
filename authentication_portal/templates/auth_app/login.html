@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Login Page{% endblock %}
+
+
+
+{% block content %}
+
+<style>
+    /* Optional: Customize the container's width on larger screens */
+    .custom-container {
+        max-width: 500px;
+        /* Adjust this value as needed */
+    }
+</style>
+
+
+<div class="container custom-container mx-md-auto">
+
+    {% if messages %}
+            <div>
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+
+    <div class="card">
+        <form method="post" action="">
+            {% csrf_token %}
+            <div class="card-header text-center">
+                <h4>GIGL Summaries<span class="badge bg-secondary">Login</span></h4>
+            </div>
+            <div class="card-body">
+
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                    <input type="email" name="email" value="{{email}}" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                </div>
+                <div class="mb-3">
+                    <label for="inputPassword4" class="form-label">Password</label>
+                    <input type="password" name="password" value="" class="form-control" id="inputPassword4">
+                </div>
+
+                <div class="mb-3 text-center">
+                    <button type="submit" class="btn btn-success">Login</button>
+                </div>
+
+
+            </div>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
